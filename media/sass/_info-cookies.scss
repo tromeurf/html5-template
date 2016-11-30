@@ -1,0 +1,47 @@
+/*
+ * Cnil mentions
+ */
+#infocookie {
+	display: none;
+	position: relative;
+	padding: 20px;
+	font: 11px Arial, helvetica, sans-serif;
+	background-color: #EFEFEF;
+	color: #666;
+  	border-bottom: 1px solid #CCC;
+
+	.site-content {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+
+  	p {
+  		margin: 0;
+  	}
+
+	a {
+		color: inherit;
+		@include transition (0.2s);
+    	text-decoration: underline;
+
+		&:hover {
+			color: #000;
+		}
+
+		&.close {
+			position: absolute;
+			right: 5px;
+			top: 5px;
+			text-decoration: none;
+			padding: 3px;
+			text-align: center;
+			background-color: #DDD;
+			border: 1px solid #CCC;
+			border-radius: 2px;
+			
+			&:hover {
+				border-color: #AAA;
+			}
+		}
+	}
+}

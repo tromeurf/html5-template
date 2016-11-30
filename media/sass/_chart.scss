@@ -1,0 +1,394 @@
+/*------------------------------------------------
+- Ici, tous les styles des éléments de la charte. (h1, h2, h3, h4, p, ul, ol, blockquote, blocs pushes, blocs vidéo, blocs, etc...)
+- Bien penser en composants html MODULABLES, de manière à pouvoir déplacer un élément, une classe, un bloc d'une page à une autre sans problème.
+- Aucun #Id dans ce fichier charte !!!
+------------------------------------------------*/
+
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html, body {
+	position: relative;
+	height: 100%;
+}
+
+body {
+	@include font-style("regular");
+	font-size: em($base-font-size);
+	line-height: normal;
+}
+
+/*==============================*/
+/*MARKUP*/
+/*==============================*/
+.like-h1, .like-h2, .like-h3, .like-h4, .like-h5, .like-h6  {
+	font-weight: bold;
+}
+h1, .like-h1 {
+	margin: 0 0 1.5em;
+	font-size: em(25px);
+}
+h2, .like-h2 {
+	margin: 0 0 1.3em;
+	font-size: em(20px);
+}
+h3, .like-h3 {
+	margin: 0 0 1.2em;
+	font-size: em(18px);
+}
+h4, .like-h4 {
+	margin: 0 0 1.1em;
+	font-size: em(16px);
+}
+h5, .like-h5 {
+	margin: 0 0 1em;
+	font-size: em(15px);
+}
+h6, .like-h6 {
+	margin: 0 0 0.9em;
+	font-size: em(14px);
+}
+
+a {
+	color: inherit; // IE8+
+	@include inline-block(baseline);
+	img {
+		//vertical-align: bottom;
+	}
+}
+
+ul, ol, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+li {
+	margin-bottom: 0.5em;
+}
+
+img {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+}
+
+ul, ol, p, blockquote, fieldset {
+	@extend .bk-type-txt;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid $grey;
+}
+
+pre {
+	display: block;
+	border: 1px solid #690;
+	margin: 0 0 1.5em 0;
+	&[class*="language-"] {
+		margin: 0 0 1.5em 0 !important;
+	}
+}
+
+fieldset {
+	legend {
+		@extend .like-h3;
+	}
+}
+
+blockquote, q {
+	padding: 0;
+	margin: 0;
+	font-size: larger;
+	font-style: italic;
+	&:before, &:after {
+		content: "“";
+		font-size: larger;
+	}
+	&:after {
+		content: "”";
+	}
+}
+blockquote {
+	padding: 10px;
+	background-color: $lightgrey;
+	border: 1px solid $grey;
+}
+
+.placeholder {
+	color: $color-placeHolder;
+}
+::-webkit-input-placeholder {
+	color: $color-placeHolder;
+}
+:-moz-placeholder {
+	color: $color-placeHolder;
+}
+::-moz-placeholder {
+	color: $color-placeHolder;
+}
+:-ms-input-placeholder {
+	color: $color-placeHolder;
+}
+
+
+/*==============================*/
+/*EXTENDS*/
+/*==============================*/
+.last-child-no-margin {
+	> *:last-child {
+		margin-bottom: 0
+	}
+}
+.bk-type-txt {
+	display: block;
+	margin: 0 0 1.5em;
+	@extend .last-child-no-margin;
+}
+.bk-type {
+	display: block;
+	margin: 0 0 25px;
+	@extend .last-child-no-margin;
+}
+
+.ta-l {text-align: left;}
+.ta-r {text-align: right;}
+.ta-c {text-align: center;}
+.float-l {float: left;}
+.float-r {float: right;}
+.uppercase {text-transform: uppercase;}
+.txt-big {
+	font-size: em(25px);
+	line-height: normal;
+}
+.out {
+	// position: absolute;
+	// left: -5000px;
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+	overflow: hidden;
+	height: 1px;
+	width: 0;
+}
+.bullet-list {
+	text-align: left;
+	li {
+		padding-left: rem(15px);
+		position: relative;
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: rem(8px);
+			width: rem(5px);
+			height: rem(5px);
+			background-color: currentColor;
+			@include border-radius(50%);
+		}
+		li {
+			padding-left: rem(10px);
+			&:before {
+				width: rem(5px);
+				height: rem(5px);
+				top: em(10px);
+			}
+		}
+	}
+}
+.ol-list {
+	text-align: left;
+	counter-reset: ol-counter;
+	> li {
+		margin-left: rem(12px);
+		padding-left: rem(15px);
+		position: relative;
+		&:before {
+			content: counter(ol-counter);
+			counter-increment: ol-counter;
+			position: absolute;
+			right: 100%;
+			top: 0;
+			color: currentColor;
+			display: inline-block;
+			padding-right: rem(5px);
+			font-weight: bold;
+		}
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: rem(8px);
+			width: rem(5px);
+			height: rem(5px);
+			background-color:  currentColor;
+			@include border-radius(50%);
+		}
+	}
+}
+.square-list {
+	li {
+		padding-left: rem(15px);
+		position: relative;
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: rem(8px);
+			width: rem(6px);
+			border-top: 6px solid currentColor;
+		}
+		li {
+			padding-left: rem(10px);
+			&:before {
+				width: rem(3px);
+				border-width: rem(3px);
+			}
+		}
+	}
+}
+.inline-list {
+	letter-spacing: -0.31em;
+	> li {
+		@include inline-block;
+		margin-bottom: 0;
+		letter-spacing: normal;
+	}
+}
+
+ul {
+	@extend .bullet-list;
+}
+ol {
+	@extend .ol-list;
+}
+.no-styled-list {
+	margin-bottom: 0;
+	li {
+		margin: 0;
+		padding: 0;
+		position: static;
+		&:before, &:after {
+			display: none;
+		}
+	}
+}
+.lk-no-underline  {
+	text-decoration: none;
+	a {
+		text-decoration: none;
+	}
+}
+.text-info {
+	padding: 5px 10px;
+	background-color: $color-info;
+	border: 1px solid $color-alert;
+	color: $black;
+}
+.text-error {
+	color: $color-error;
+}
+.text-success {
+	color: $color-success;
+}
+
+
+/*==============================*/
+/*COVER - CONTAIN*/
+/*==============================*/
+.cover-parent, .contain-parent {
+	position: relative;
+	min-height: 10px;
+}
+.cover, .contain {
+	position: absolute;
+}
+
+/*==============================*/
+/*DRUPAL*/
+/*==============================*/
+@import "components/cms-components";
+
+
+/*==============================*/
+/*BUTTONS*/
+/*==============================*/
+@import "components/btns";
+
+
+/*==============================*/
+/*FORM ELEMENTS*/
+/*==============================*/
+@import "components/forms";
+
+
+/*==============================*/
+/*TABLE ELEMENTS*/
+/*==============================*/
+@import "components/tables";
+
+
+/*==============================*/
+/*GRIDS*/
+/*==============================*/
+@import "components/grids";
+
+
+
+
+
+
+
+
+/*==============================*/
+/*BLOCKS*/
+/*==============================*/
+.bk-warning {
+	@extend .bk-type;
+	padding: 20px;
+	background-color: #ecc2ca;
+	border: 1px solid $color-error;
+}
+.bk-info {
+	@extend .bk-type;
+	padding: 20px;
+	background-color: $color-info;
+	border: 1px solid $color-alert;
+	color: $black;
+}
+.framed {
+	@extend .bk-type;
+	border: 1px solid $grey;
+	padding: 20px;
+	&.grey {
+		background-color: #ececec;
+	}
+}
+
+/*==============================*/
+/*WYSIWYG et CKEDITOR*/
+/*==============================*/
+.cke_editable, .cke_show_borders {
+	padding: 15px;
+	ul {
+		@extend .bullet-list;
+	}
+	ol {
+		@extend .ol-list;
+	}
+}
+
+
+/*==============================*/
+/*SLIDERS*/
+/*==============================*/
+
+
+
+/*==============================*/
+/*...*/
+/*==============================*/

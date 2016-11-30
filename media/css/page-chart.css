@@ -1,0 +1,101 @@
+/*
+ * source-code-popin
+ */
+/*==============================*/
+/*Compass & custom imports*/
+/*==============================*/
+/*------------------------------------------------
+- Ici, toutes les fonctions sass et les mixins
+------------------------------------------------*/
+/*==============================*/
+/*Custom Functions*/
+/*==============================*/
+/*==============================*/
+/*Custom Mixins*/
+/*==============================*/
+/* line 48, ../sass/_mixins.scss */
+.clearfix {
+  *zoom: 1;
+}
+/* line 50, ../sass/_mixins.scss */
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 57, ../sass/_mixins.scss */
+.visually-hidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+/* line 22, ../sass/page-chart.scss */
+.board-section {
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 15%;
+  height: 50%;
+  max-width: 300px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -moz-transition: 0.2s;
+  -o-transition: 0.2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+/* line 39, ../sass/page-chart.scss */
+.board-section .content-board {
+  padding: 10px;
+  position: relative;
+  max-height: 100%;
+  overflow: auto;
+}
+/* line 46, ../sass/page-chart.scss */
+.board-section.hidden-board {
+  -moz-transform: translateX(0%) rotate(135deg);
+  -ms-transform: translateX(0%) rotate(135deg);
+  -webkit-transform: translateX(0%) rotate(135deg);
+  transform: translateX(0%) rotate(135deg);
+  margin-left: 20px;
+  margin-top: -20px;
+}
+/* line 50, ../sass/page-chart.scss */
+.board-section.hidden-board .toggle-board {
+  right: auto;
+  left: 0;
+}
+/* line 56, ../sass/page-chart.scss */
+.board-section:hover {
+  background-color: white;
+}
+/* line 60, ../sass/page-chart.scss */
+.board-section ul {
+  margin-bottom: 0;
+}
+/* line 62, ../sass/page-chart.scss */
+.board-section ul a {
+  background-color: white;
+}
+/* line 66, ../sass/page-chart.scss */
+.board-section .toggle-board {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #63b2a6;
+  border: none;
+}

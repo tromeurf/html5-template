@@ -1,0 +1,198 @@
+/*
+ * Form elements
+ */
+
+.line {
+	@extend .bk-type-txt;
+}
+
+label {
+ 	@include inline-block;
+}
+
+input,
+select {
+	vertical-align: middle;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+input[type="search"],
+textarea,
+select,
+.styled-select {
+	@include inline-block;
+	width: 100%;
+	padding: 5px 10px;
+	border: 1px solid $lightgrey;
+	background-color: $white;
+	border-radius: 0;
+	@include appearance(none);
+}
+
+.styled-select {
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+	min-width: 200px;
+	
+
+	&:before {
+		content: "↓";
+		position: absolute;
+		right: 8px;
+		top: 50%;
+		margin-top: -13px;
+		font-size: 15px;
+		font-weight: bold;
+		.ie9 & {
+			display: none;
+		}
+	}
+
+	select {
+		padding-right: 30px;
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		max-width: none;
+		border: none;
+		background-color: transparent;
+		@include appearance(none);
+		&::-ms-expand {
+			display: none;
+		}
+		.ie9 & {
+			padding-right: 10px;
+		}
+	}
+}
+
+textarea {
+	display: block;
+	min-height: 250px;
+}
+
+input[type="submit"],
+input[type="reset"],
+button {
+	//@extend .btn;
+}
+
+.input-with-button {
+	@include inline-block;
+	position: relative;
+
+	[type="text"],
+	[type="email"] {
+		width: 100%;
+		padding-right: 57px;
+		border: none;
+	}
+
+	[type="submit"] {
+		width: 47px;
+		padding: 0 5px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		text-align: center;
+		background: $grey;
+		color: $black;
+		border: none;
+		font-size: em(23px);
+	}
+}
+
+.line {
+	label,
+	.label-like {
+		display: block;
+		padding-left: 10px;
+		margin-bottom: 1px;
+		text-transform: uppercase;
+	}
+
+	.label-like.inline {
+		@include inline-block;
+	}
+}
+
+.inline-inputs {
+
+	label {
+		@include inline-block;
+		font-weight: normal;
+		padding-left: 5px;
+		padding-right: 0;
+		text-transform: none;
+	}
+}
+
+.simple-inline-input {
+	position: relative;
+	padding-left: 15px;
+
+	input {
+		position: absolute;
+		left: 0;
+		top: 3px;
+	}
+
+	label {
+		@include inline-block;
+		font-weight: normal;
+		padding-left: 5px;
+		padding-right: 0;
+		text-transform: none;
+	}
+}
+
+.legal {
+	font-size: em(11px);
+	line-height: normal;
+}
+
+
+//Errors
+.parsley-errors-list {
+	margin-bottom: 0;
+	color: $color-error;
+	font-size: em(11px);
+
+	li {
+		padding-left: 0 !important;
+
+		&:before {
+			display: none;
+		}
+	}
+
+	.no-error-msg & {
+		display: none;
+	}
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+
+	&.parsley-error {
+		border: 1px solid $color-error;
+	}
+}
+
+.inline-inputs.parsley-error {
+	color: $color-error;
+}

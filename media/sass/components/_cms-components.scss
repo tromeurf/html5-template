@@ -1,0 +1,174 @@
+/*
+ * Drupal styles
+ */
+
+
+#admin-menu {
+	z-index: 9999;
+	
+	#admin-menu-wrapper {
+		overflow: inherit;
+	}
+	
+	ul { 
+		@extend .no-styled-list;
+	}
+}
+
+
+/*==============================*/
+/*Admin tabs*/
+/*==============================*/
+.tabs-primary.tabs.primary {
+	@extend .no-styled-list;
+	text-align: center; 
+	li {
+		display: inline-block;
+	}
+	a {
+		@extend .btn;
+	}
+}
+
+
+/*==============================*/
+/*AJAX*/
+/*==============================*/
+.ajax-progress {
+	.throbber {
+		display: none;
+	}
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	margin: 0 0 0 -20px;
+	width: 40px;
+	height: 40px;
+	background-color: #333;
+
+	@include border-radius(100%);  
+	-webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+	animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+
+/*==============================*/
+/*PAGINATION*/
+/*==============================*/
+.bk-pager {
+	//@include bk-type;
+	
+	.pager {
+		position: relative;
+		margin: 0 auto;
+		text-align: center;
+		
+		@extend .no-styled-list;
+
+		li {
+			@include inline-block;
+			margin: 0 1px;
+			padding: 0;
+			width: 44px;
+			height: 44px;
+			line-height: 44px;
+			background-color: $lightgrey;
+			@include font-style("light");
+			font-size: 16px;
+			font-weight: bold;
+			color: $black;
+			text-align: center;
+
+			a {
+				display: block;
+				text-decoration: none;
+
+				&:hover, &:focus {
+					background-color: $grey;
+				}
+			}
+			&.pager-current {
+				@include font-style("light");
+				background-color: $black;
+				color: $white;
+			}
+			&.pager-first, &.pager-last, &.pager-next, &.pager-previous {
+				text-indent: -1000px;
+				overflow: hidden;
+				position: relative;
+				a {
+					&:before {
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						text-indent: 0;
+						@include translate(-50%, -50%);
+					}
+				}
+			}
+			&.pager-first {
+				a:before {
+					content: "|<";
+				}
+			}
+			&.pager-last {
+				a:before {
+					content: ">|";
+				}
+			}
+
+			&.pager-next {
+				a:before {
+					content: ">";
+				}
+			}
+			&.pager-previous {
+				a:before {
+					content: "<";
+				}
+				
+			}
+			&.pager-ellipsis {
+
+			}
+		}
+	}
+}
+
+
+
+/*==============================*/
+/*MESSAGES : ERROR, CONFIRM, ALERT,... */
+/*==============================*/
+
+
+
+
+/*==============================*/
+/*ADMIN BUTTONS*/
+/*==============================*/
+
+
+
+/*==============================*/
+/*...*/
+/*==============================*/

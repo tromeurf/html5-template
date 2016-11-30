@@ -1,0 +1,173 @@
+/*------------------------------------------------
+- Ici, toutes les fonctions sass et les mixins
+------------------------------------------------*/
+
+/*==============================*/
+/*Custom Functions*/
+/*==============================*/
+@function rem($px_value, $baseline: $base-font-size) {
+	@if $px_value == 0 or type-of($px_value) != 'number' {
+		@return $px_value;
+	}
+	
+	@return $px_value / ($baseline / 1rem);
+}
+
+@function em($px_value, $baseline: $base-font-size) {
+	@if $px_value == 0 or type-of($px_value) != 'number' {
+		@return $px_value;
+	}
+
+	@return $px_value / ($baseline / 1em);
+}
+
+@function path($image_name) {
+	@return $image_path + $image_name;
+}
+
+@mixin font-smoothing() {
+	font-smooth:antialiased;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-stroke: 1px transparent;
+}
+
+/*==============================*/
+/*Custom Mixins*/
+/*==============================*/
+@mixin clearfix {
+	*zoom: 1;
+	&:before, &:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+//For @extend
+.clearfix {
+	*zoom: 1;
+	&:before, &:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+//For @extend
+.visually-hidden {
+	margin: -1px;
+	padding: 0;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	clip: rect(0, 0, 0, 0);
+	position: absolute;
+}
+
+@mixin font-style($style) {
+	font-weight: normal;
+	font-style: normal;
+	@if ($style == "regular") {
+		font-family: $default_fonts;
+	} @else if ($style == "bold") {
+		 //Si webfont bold ==> font-family: "my-webfont-bold", Arial, helvetica, sans-serif;
+		font-weight: normal;
+	} @else if ($style == "italic") {
+		 //Si webfont italic ==> font-family: "my-webfont", Arial, helvetica, sans-serif;
+		font-weight: normal;
+	} @else if ($style == "black") {
+		font-family: "Arial Black", serif;
+		font-weight: normal;
+	}
+}
+
+@mixin background-image-full($image) {
+	@include background-image($image); // Compass default version, for everything but IE 10.
+    background-image: -ms-#{$image}; // Vendor prefixes for IE 10.
+}
+
+@mixin background($image, $color: "transparent", $position: "left top", $repeat: "no-repeat", $attachment: "scroll") {
+	background: $color url($image_path + $url) $no-repeat $attachment $position;
+}
+
+@mixin background-retina($file, $type, $size, $position: "left top", $repeat: "no-repeat", $attachment: "scroll") {
+	background-image: url(path($file + '.' + $type));
+	background-position: #{$position};
+	background-repeat: #{$repeat};
+	background-attachment: #{$attachment};
+	@include background-size($size);
+
+	@if file_exists($image_path_sys + $file + $retina_display_suffix + "." + $type) { 
+		@media only screen and (-webkit-min-device-pixel-ratio: 1.3),
+		only screen and (-moz-min-device-pixel-ratio: 1.3),
+		only screen and (-o-min-device-pixel-ratio: 2.6/2),
+		only screen and (min-device-pixel-ratio: 1.3),
+		only screen and (min-resolution: 1.3dppx) {
+			& {
+				background-image: url(path($file + $retina_display_suffix + "." + $type));
+			}
+		}
+	}
+}
+
+// Breakpoint mixin
+@mixin breakpoint($max:'', $min:'') {
+	$query: true;
+	@if ($min == '') {
+		@media only screen and (max-width: em($max + $scrollbar_width, 16px)) { @content; }
+	} @else if ($max == '') {
+		@media only screen and (min-width: em($min + $scrollbar_width, 16px)) { @content; }
+	} @else {
+		@media only screen and (min-width: em($min + $scrollbar_width, 16px)) and (max-width: em($max + $scrollbar_width, 16px)) { @content; }
+	}
+	$query: false;
+}
+
+// Mobile first way
+@mixin bp($min:'', $max:'') {
+	$query: true;
+	@if ($min == '') {
+		@media only screen and (max-width: em($max + $scrollbar_width, 16px)) { @content; }
+	} @else if ($max == '') {
+		@media only screen and (min-width: em($min + $scrollbar_width, 16px)) { @content; }
+	} @else {
+		@media only screen and (min-width: em($min + $scrollbar_width, 16px)) and (max-width: em($max + $scrollbar_width, 16px)) { @content; }
+	}
+	$query: false;
+}
+
+@mixin large($min:"") {
+	@include breakpoint($large - 1, $min) {
+		@content;
+	}
+}
+
+@mixin medium($min:"") {
+	@include breakpoint($medium - 1, $min) {
+		@content;
+	}
+}
+
+@mixin tablet($min:"") {
+	@include breakpoint($tablet - 1, $min) {
+		@content;
+	}
+}
+
+@mixin mobile($min:"") {
+	@include breakpoint($mobile - 1, $min) {
+		@content;
+	}
+}
+
+@mixin linear-gradient($fromColor, $toColor) {
+	background-color: $toColor; /* Fallback Color */
+	background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, $fromColor, $toColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image:    -moz-linear-gradient(top, $fromColor, $toColor); /* FF3.6 */
+	background-image:     -ms-linear-gradient(top, $fromColor, $toColor); /* IE10 */
+	background-image:      -o-linear-gradient(top, $fromColor, $toColor); /* Opera 11.10+ */
+	background-image:         linear-gradient(top, $fromColor, $toColor);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}

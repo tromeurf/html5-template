@@ -1,0 +1,75 @@
+/*
+ * source-code-popin
+ */
+/*==============================*/
+/*Compass & custom imports*/
+/*==============================*/
+
+@import "mixins";
+
+// See http://compass-style.org
+@import "compass";
+@import "compass/support";
+@import "compass/typography/vertical_rhythm";
+@import "compass/css3";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-sizing";
+@import "compass/css3/transition";
+@import "compass/css3/inline-block";
+@import "compass/css3/opacity";
+@import "rgbapng";
+ 
+.board-section {
+	position: fixed;
+	z-index: 10000;
+	left: 0;
+	top: 15%;
+	height: 50%;
+	max-width: 300px;
+	background-color: rgba(white, 0.5);
+	border: 1px solid black;
+	//@include transform-origin(0 0);
+	-webkit-transform-origin: 0 0;
+	   -moz-transform-origin: 0 0;
+	    -ms-transform-origin: 0 0;
+	     -o-transform-origin: 0 0;
+	        transform-origin: 0 0;
+	@include transition(0.2s);
+	
+	.content-board {
+		padding: 10px;
+		position: relative;
+		max-height: 100%;
+		overflow: auto;
+	}
+	
+	&.hidden-board {
+		@include transform(translateX(0%) rotate(135deg));
+		margin-left: 20px;
+		margin-top: -20px;
+		.toggle-board {
+			right: auto;
+			left: 0;
+		}
+	}
+	
+	&:hover {
+		background-color: rgba(white, 1);
+	}
+	
+	ul {
+		margin-bottom: 0;
+		a {
+			background-color: white;
+		}
+	}
+	.toggle-board {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 30px;
+		height: 30px;
+		background-color: #63b2a6;
+		border: none;
+	}
+}

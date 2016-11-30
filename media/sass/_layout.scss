@@ -1,0 +1,71 @@
+/*------------------------------------------------
+- Ici, tous les styles relatifs à la structure de la page. La base, la "coquille" du site. (header / content / footer)
+------------------------------------------------*/
+
+body {
+	//background à remplir pour l'accessibilité
+	background-color: $white;
+	min-width: 320px;
+}
+.browsehappy {
+	@extend .bk-info;
+}
+.site-content {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.skip-links {
+	@extend .no-styled-list;
+	margin: 0;
+
+	li {
+		margin: 0;
+	}
+	
+	a {
+		position: absolute;
+		left: -50000px;
+		&:focus {
+			position: static;
+			left: auto;
+		}
+	}
+}
+
+/*==============================*/
+/*HEADER*/
+/*==============================*/
+.page-header-wrapper {
+	background-color: #63b2a6;
+	padding: 10px;
+	ul, ol {
+		@extend .no-styled-list;
+	}
+
+	/*==============================*/
+	/*NAV*/
+	/*==============================*/
+	@import "nav";
+
+}
+
+
+/*==============================*/
+/*CONTENT*/
+/*==============================*/
+.page-content-wrapper {
+	@extend .clearfix;
+	
+	
+}
+
+/*==============================*/
+/*FOOTER*/
+/*==============================*/
+.page-footer-wrapper {
+	background-color: #63b2a6;
+	padding: 10px;
+	ul, ol {
+		@extend .no-styled-list;
+	}
+}

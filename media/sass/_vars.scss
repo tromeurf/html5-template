@@ -1,0 +1,131 @@
+/*
+ * vars.scss
+ */
+
+/*==============================*/
+// These variables are copies of ones used in Compass' Vertical Rhythm module.
+/*==============================*/
+
+// The base font size.
+$base-font-size: 14px !default;
+
+// The base line height determines the basic unit of vertical rhythm.
+$base-line-height: 24px !default;
+
+// Set this to true to force CSS output to exactly match normalize.css.
+$strict-normalize: true !default;
+
+// The default font family.
+$base-font-family: sans-serif !default;
+
+// The amount lists and blockquotes are indented.
+$indent-amount: 40px !default;
+
+
+/*==============================*/
+/*Colors*/
+/*==============================*/
+$white: white;
+$black: black;
+$lightgrey: #EFEFEF;
+$grey: grey;
+$darkgrey: #333;
+$color-active: blue;
+$color-error: #900;
+$color-success: green;
+$color-placeHolder: $grey;
+$color-alert: orange;
+$color-info: #FAE692;
+
+
+/*==============================*/
+/*Path*/
+/*==============================*/
+$image_path: "../images/";
+$font_path: "../fonts/";
+$image_path_sys: relative_path("/media/images/");
+$css_path_sys: relative_path("/media/css/");
+$retina_display_suffix: "_hd";
+
+/*==============================*/
+/*Fonts*/
+/*==============================*/
+$default_fonts: Arial, helvetica, sans-serif;
+
+/*==============================*/
+/*Compass mixins settings*/
+/*==============================*/
+$inline-block-alignment: middle;
+
+/*==============================*/
+// Breakpoints
+/*==============================*/
+$large: 1599px;
+$medium: 1279px;
+$standard: 1023px;
+$tablet: 767px;
+$phablet: 599px;
+$mobile: 479px;
+
+$scrollbar_width: 0px;
+
+
+/*==============================*/
+/*Compass & custom imports*/
+/*==============================*/
+
+// See http://compass-style.org
+@import "compass";
+@import "compass/support";
+@import "compass/typography/vertical_rhythm";
+@import "compass/css3";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-sizing";
+@import "compass/css3/transition";
+@import "compass/css3/inline-block";
+@import "compass/css3/opacity";
+@import "rgbapng";
+
+
+/*==============================*/
+/*Grids (using Gridle - http://gridle.org/)*/
+/*==============================*/
+$gutter-w: 20px; // px or %
+
+@import "gridle/gridle";
+
+@include gridle_setup((
+	context : 12,
+	gutter-width : $gutter-w
+));
+
+// make the use of media queries really easy
+@include gridle_register_state ( standard , (
+	max-width : $standard,
+	gutter-width : $gutter-w
+) );
+
+// make the use of media queries really easy
+@include gridle_register_state ( tablet , (
+	max-width : $tablet,
+	gutter-width : $gutter-w
+) );
+
+
+// make the use of media queries really easy
+@include gridle_register_state ( mobile , (
+	max-width : $mobile,
+	gutter-width : $gutter-w
+) );
+
+// generate classes :
+@include gridle_generate_classes ();
+
+
+
+
+
+
+
+// Import our custom mixins last.
+@import "mixins";

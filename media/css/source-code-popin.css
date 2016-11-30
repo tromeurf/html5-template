@@ -1,0 +1,82 @@
+/*
+ * source-code-popin
+ */
+/*==============================*/
+/*Compass & custom imports*/
+/*==============================*/
+/* line 20, ../sass/source-code-popin.scss */
+.popin-source {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  max-height: 80%;
+  width: 600px;
+  max-width: 90%;
+  overflow: auto;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 5px solid black;
+  background-color: white;
+  -moz-box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.3);
+}
+/* line 33, ../sass/source-code-popin.scss */
+.popin-source pre[class*="language-"] {
+  margin-bottom: 0 !important;
+}
+/* line 36, ../sass/source-code-popin.scss */
+.popin-source .popin-source-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: black;
+  color: white;
+}
+/* line 43, ../sass/source-code-popin.scss */
+.popin-source .popin-source-copy {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: black;
+  color: white;
+}
+/* line 50, ../sass/source-code-popin.scss */
+.popin-source .copy-msg {
+  position: absolute;
+  left: 60px;
+  top: 2px;
+}
+
+/* line 56, ../sass/source-code-popin.scss */
+.js-source-code {
+  position: relative;
+}
+
+/* line 59, ../sass/source-code-popin.scss */
+.btn-show-source {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #63b2a6;
+  width: 30px;
+  height: 30px;
+  text-indent: -50000px;
+  overflow: hidden;
+}
+/* line 68, ../sass/source-code-popin.scss */
+.btn-show-source:before {
+  content: "<!>";
+  font-weight: bold;
+  text-indent: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

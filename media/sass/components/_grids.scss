@@ -1,0 +1,24 @@
+/*
+ * Grids (see Gridle.org doc)
+ */
+
+.container {
+	&.collapsed {
+		margin-left: -($gutter-w/2);
+		margin-right: -($gutter-w/2);
+	}
+	&.inline-b {
+		letter-spacing: -0.31em;
+		[class^="grid"] {
+			@include inline-block(top);
+			float: none;
+			letter-spacing: normal;
+		}
+		&.center {
+			text-align: center;
+			[class^="grid"] {
+				text-align: left;
+			}
+		}
+	}
+}
