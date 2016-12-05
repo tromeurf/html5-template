@@ -13,6 +13,8 @@ javascripts_dir = "media/js"
 #add_import_path "/usr/local/rvm/gems/ruby-1.9.3-p551/gems/gridle-1.3.33/lib/"
 
 require "rgbapng"
+
+gem 'gridle', '=1.3.36'
 require "gridle"
 require File.join(File.dirname(__FILE__), "media/sass/extensions/functions.rb")
 
